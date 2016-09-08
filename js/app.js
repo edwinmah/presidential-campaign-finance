@@ -88,8 +88,8 @@ console.log(Candidate.getData)
 
 // Cash on Hand
 function cash() {
-  var cashClinton  = Candidate.getData[0].cash_on_hand.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  var cashTrump    = Candidate.getData[2].cash_on_hand.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  var cashClinton  = Math.round(Candidate.getData[0].cash_on_hand).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  var cashTrump    = Math.round(Candidate.getData[2].cash_on_hand).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   var output  = '<p>Clinton: ' + cashClinton + '</p>';
       output += '<p>Trump: '   + cashTrump   + '</p>';
@@ -101,8 +101,8 @@ function cash() {
 
 // Total Receipts
 function receipts() {
-  var receiptsClinton  = Candidate.getData[0].total_receipts.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  var receiptsTrump    = Candidate.getData[2].total_receipts.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  var receiptsClinton  = Math.round(Candidate.getData[0].total_receipts).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  var receiptsTrump    = Math.round(Candidate.getData[2].total_receipts).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   var output  = '<p>Clinton: ' + receiptsClinton + '</p>';
       output += '<p>Trump: '   + receiptsTrump   + '</p>';
@@ -114,8 +114,8 @@ function receipts() {
 
 // Total Contributions
 function contributions() {
-  var contributionsClinton  = Candidate.getData[0].total_contributions.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  var contributionsTrump    = Candidate.getData[2].total_contributions.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  var contributionsClinton  = Math.round(Candidate.getData[0].total_contributions).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  var contributionsTrump    = Math.round(Candidate.getData[2].total_contributions).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   var output  = '<p>Clinton: ' + contributionsClinton + '</p>';
       output += '<p>Trump: '   + contributionsTrump   + '</p>';
@@ -127,8 +127,8 @@ function contributions() {
 
 // Total Disbursements
 function disbursements() {
-  var disbursementsClinton  = Candidate.getData[0].total_disbursements.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  var disbursementsTrump    = Candidate.getData[2].total_disbursements.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  var disbursementsClinton  = Math.round(Candidate.getData[0].total_disbursements).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  var disbursementsTrump    = Math.round(Candidate.getData[2].total_disbursements).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   var output  = '<p>Clinton: ' + disbursementsClinton + '</p>';
       output += '<p>Trump: '   + disbursementsTrump   + '</p>';
@@ -140,8 +140,8 @@ function disbursements() {
 
 // Independent Expenditures – Oppose
 function indepExpendOppose() {
-  var indepExpendOpposeClinton  = Candidate.getData[0].independent_expenditures_oppose.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  var indepExpendOpposeTrump    = Candidate.getData[2].independent_expenditures_oppose.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  var indepExpendOpposeClinton  = Math.round(Candidate.getData[0].independent_expenditures_oppose).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  var indepExpendOpposeTrump    = Math.round(Candidate.getData[2].independent_expenditures_oppose).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   var output  = '<p>Clinton: ' + indepExpendOpposeClinton + '</p>';
       output += '<p>Trump: '   + indepExpendOpposeTrump   + '</p>';
@@ -153,8 +153,8 @@ function indepExpendOppose() {
 
 // Independent Expenditures – Support
 function indepExpendSupport() {
-  var indepExpendSupportClinton  = Candidate.getData[0].independent_expenditures_support.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  var indepExpendSupportTrump    = Candidate.getData[2].independent_expenditures_support.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  var indepExpendSupportClinton  = Math.round(Candidate.getData[0].independent_expenditures_support).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  var indepExpendSupportTrump    = Math.round(Candidate.getData[2].independent_expenditures_support).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   var output  = '<p>Clinton: ' + indepExpendSupportClinton + '</p>';
       output += '<p>Trump: '   + indepExpendSupportTrump   + '</p>';
