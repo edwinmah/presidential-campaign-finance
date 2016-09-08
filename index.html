@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>A 2016 Presidential Campaign Finance Comparison &mdot; Clinton vs. Trump</title>
+    <meta name="description" content="A 2016 Presidential Campaign Finance Comparison, Clinton vs. Trump">
+
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+  </head>
+
+  <body>
+
+    <nav class="visuallyhidden focusable"><a href="#content">Skip to content</a></nav>
+
+    <header role="banner" class="site-header">
+      <div class="container container--max">
+        <h1>Hillary Clinton vs. Donald Trump</h1>
+        <p>A 2016 Presidential Campaign Finance Comparison</p>
+      </div>
+    </header>
+
+    <main id="content">
+
+      <form id="compare" class="compare-form">
+        <div class="container container--med">
+          <fieldset class="select-inputs">
+            <legend class="visuallyhidden focusable">Select an item to compare between the candidates</legend>
+            <div id="options" class="options">
+              <div class="select">
+                <input type="checkbox" id="toggleThree" class="toggle">
+                <label for="toggleThree" class="toggle-label angle">Select an item for comparison</label>
+
+                <ul class="select-list">
+                  <li class="select-option">
+                    <input type="radio" name="cash" id="cash" value="Cash on Hand">
+                    <label for="cash" class="select-label">Cash on Hand</label>
+                  </li>
+                  <li class="select-option">
+                    <input type="radio" name="contribution-levels" id="contribution-levels" value="Contribution Levels">
+                    <label for="contribution-levels" class="select-label">Contribution Levels</label>
+                  </li>
+                  <li class="select-option">
+                    <input type="radio" name="total-contributions" id="total-contribution" value="Total Contributions">
+                    <label for="total-contribution" class="select-label">Total Contributions</label>
+                  </li>
+                  <li class="select-option">
+                    <input type="radio" name="total-disbursements" id="total-disbursements" value="Total Disbursements">
+                    <label for="total-disbursements" class="select-label">Total Disbursements</label>
+                  </li>
+                  <li class="select-option">
+                    <input type="radio" name="total-receipts" id="total-receipts" value="Total Receipts">
+                    <label for="total-receipts" class="select-label">Total Receipts</label>
+                  </li>
+                  <li class="select-option">
+                    <input type="radio" name="ind-expend-support" id="ind-expend-support" value="Independent Expenditures Support">
+                    <label for="ind-expend-support" class="select-label">Independent Expenditures &ndash; Support</label>
+                  </li>
+                  <li class="select-option">
+                    <input type="radio" name="ind-expend-oppose" id="ind-expend-oppose" value="Independent Expenditures Oppose">
+                    <label for="ind-expend-oppose" class="select-label">Independent Expenditures &ndash; Oppose</label>
+                  </li>
+                </ul>
+              </div><!-- end .select -->
+            </div><!-- end #options -->
+          </fieldset>
+        </div><!-- end .container -->
+      </form>
+
+      <div id="results" class="band">
+        <div class="container container--max">
+          <h2 class="band__title"></h2>
+          <div id="visual"></div>
+        </div>
+      </div><!-- end #results -->
+
+    </main>
+
+
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script src="js/app.js"></script>
+
+  </body>
+</html>
