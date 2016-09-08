@@ -25,13 +25,13 @@ $.ajax({
 })
   .fail(function(jqXHR, error){
     var errorElem = showError(error);
-    $('.search-results').append(errorElem);
+    $('#visual').append(errorElem);
 });
 
 
 // takes error string and turns it into displayable DOM element
 var showError = function(error){
-  var errorElem = $('.templates .error').clone();
+  var errorElem = $('.error').clone();
   var errorText = '<p>' + error + '</p>';
   errorElem.append(errorText);
 };

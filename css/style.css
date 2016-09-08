@@ -171,6 +171,10 @@ fieldset {
   background-color: #D6D1D1;
 }
 
+.error {
+  display: none;
+}
+
 /* Assistive */
 .visuallyhidden {
   position: absolute;
