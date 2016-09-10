@@ -18,7 +18,7 @@
     <header role="banner" class="site-header">
       <div class="container container--med">
         <h1 class="site-header__title"><span class="candidate1"></span> vs. <span class="candidate2"></span></h1>
-        <p class="site-header__tagline">A 2016 Presidential Campaign Finance Comparison</p>
+        <p class="site-header__tagline">A 2016 Presidential Campaign Finance Comparison (through <time datetime="2016-07-31" class="date-cutoff"></time>)</p>
       </div>
     </header>
 
@@ -38,23 +38,37 @@
                     <input type="radio" name="cash" id="cash" value="Cash on Hand">
                     <label for="cash" class="select-label">Cash on Hand</label>
                   </li>
-<!--
-                  <li class="select-option">
-                    <input type="radio" name="contribution-levels" id="contribution-levels" value="Contribution by Amounts">
-                    <label for="contribution-levels" class="select-label">Contribution by Amounts</label>
-                  </li>
--->
                   <li class="select-option">
                     <input type="radio" name="total-contributions" id="total-contribution" value="Total Contributions">
                     <label for="total-contribution" class="select-label">Total Contributions</label>
                   </li>
                   <li class="select-option">
-                    <input type="radio" name="total-disbursements" id="total-disbursements" value="Total Disbursements">
-                    <label for="total-disbursements" class="select-label">Total Disbursements</label>
+                    <input type="radio" name="contribution-levels" id="contribution-level1" value="Contribution by Amount: Under $200">
+                    <label for="contribution-level1" class="select-label">Contribution by Amount: Under $200</label>
+                  </li>
+                  <li class="select-option">
+                    <input type="radio" name="contribution-levels" id="contribution-level2" value="Contribution by Amount: $200 to 499">
+                    <label for="contribution-level2" class="select-label">Contribution by Amount: $200 to 499</label>
+                  </li>
+                  <li class="select-option">
+                    <input type="radio" name="contribution-levels" id="contribution-level3" value="Contribution by Amount: $500 to 1,499">
+                    <label for="contribution-level3" class="select-label">Contribution by Amount: $500 to 1,499</label>
+                  </li>
+                  <li class="select-option">
+                    <input type="radio" name="contribution-levels" id="contribution-level4" value="Contribution by Amount: $1,500 to 2,699">
+                    <label for="contribution-level4" class="select-label">Contribution by Amount: $1,500 to 2,699</label>
+                  </li>
+                  <li class="select-option">
+                    <input type="radio" name="contribution-levels" id="contribution-level5" value="Contribution by Amount: Maximum">
+                    <label for="contribution-level5" class="select-label">Contribution by Amount: Maximum</label>
                   </li>
                   <li class="select-option">
                     <input type="radio" name="total-receipts" id="total-receipts" value="Total Receipts">
                     <label for="total-receipts" class="select-label">Total Receipts</label>
+                  </li>
+                  <li class="select-option">
+                    <input type="radio" name="total-disbursements" id="total-disbursements" value="Total Disbursements">
+                    <label for="total-disbursements" class="select-label">Total Disbursements</label>
                   </li>
                   <li class="select-option">
                     <input type="radio" name="ind-expend-support" id="ind-expend-support" value="Independent Expenditures – Support">
@@ -71,9 +85,9 @@
         </div><!-- end .container -->
       </form>
 
-      <div id="results" class="band">
+      <div id="results" class="results">
         <div class="container container--med">
-          <h2 class="title">Cash on Hand</h2>
+          <h2 class="results__title">Cash on Hand</h2>
           <div id="result">
             <dl>
               <dt><strong>Clinton: </strong></dt><dd>$58,471,932</dd>

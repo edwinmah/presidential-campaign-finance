@@ -12,33 +12,6 @@ body {
   }
 }
 
-dt,
-dd {
-  display: inline-block;
-  text-transform: uppercase;
-}
-
-dd {
-  margin-left: .625em;
-}
-
-dt:nth-of-type(2n) {
-  margin-left: 2em;
-}
-
-a {
-  color: #176691;
-  text-decoration: none;
-  -webkit-transition: all 200ms linear;
-  transition: all 200ms linear;
-}
-
-a:active,
-a:hover,
-a:focus {
-  color: #0d384f;
-}
-
 /* Layout */
 html {
   box-sizing: border-box;
@@ -67,29 +40,24 @@ html {
   width: 48em;
 }
 
-/* Grid */
-.full {
-  padding-left: 1.3889%;
-  padding-right: 1.3889%;
-  width: 100%;
-}
-
-@media (min-width: 30em) {
-  .sm-one-half {
-    float: left;
-    padding-left: 1.3889%;
-    padding-right: 1.3889%;
-    width: 50%;
-  }
-}
-
-/* Content Bands */
-.band {
+/* Site Header & Content */
+.site-header,
+.results {
   text-align: center;
 }
 
-.band:nth-child(odd) {
-  background-color: #f4f4f4;
+dt,
+dd {
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+dd {
+  margin-left: .625em;
+}
+
+dt:nth-of-type(2n) {
+  margin-left: 2em;
 }
 
 /* Comparison Form */
@@ -166,7 +134,7 @@ fieldset {
 }
 
 .toggle:checked ~ ul {
-  max-height: 25em;
+  max-height: 40em;
   z-index: 100;
 }
 

@@ -33,8 +33,11 @@ $.ajax({
     Comparison.two.name  = Comparison.getData[Comparison.two.index].name;
     Comparison.two.party = Comparison.getData[Comparison.two.index].party;
 
+    var dateCutoff = new Date(2016, 06, 31).toDateString();
+
     $('.candidate1').text(Comparison.one.name);
     $('.candidate2').text(Comparison.two.name);
+    $('.date-cutoff').text(dateCutoff);
 
 })
   .fail(function(jqXHR, error) {
@@ -78,7 +81,7 @@ Chart.defaults.global.defaultFontFamily = '-apple-system, BlinkMacSystemFont, "S
 Chart.defaults.global.legend.display    = false;
 
 
-// Chart.js
+// Bar chart
 var ctx = $('#visuals');
 
 var data = {
@@ -94,7 +97,6 @@ var data = {
         'rgba(44, 77, 135, 0.6)',
         'rgba(182, 34, 32, 0.6)'
       ],
-      borderWidth: 1,
       data: [58, 38]
     }
   ]
@@ -106,11 +108,7 @@ var configBar = {
   options: {
     categoryPercentage: 1,
     scales: {
-      xAxes: [{
-        ticks: {
-          beginAtZero: true
-        }
-      }]
+      xAxes: [{ ticks: { beginAtZero: true } }]
     }
   }
 }
@@ -118,20 +116,23 @@ var configBar = {
 var barChart = new Chart(ctx, configBar);
 
 
-function addChart(candidateAmt1, candidateAmt2, candidateLabel1, candidateLabel2, selection) {
+
+
+// Create a new chart
+function addBarChart(candidateAmt1, candidateAmt2, candidateLabel1, candidateLabel2, selection) {
 
   // add data to Chart.js dataset
-  data.labels[0]           = candidateLabel1;
-  data.labels[1]           = candidateLabel2;
-  data.datasets[0].label   = selection;
-  data.datasets[0].data[0] = candidateAmt1;
-  data.datasets[0].data[1] = candidateAmt2;
+  data.datasets[0].label = selection;
+  data.labels            = [candidateLabel1, candidateLabel2];
+  data.datasets[0].data  = [candidateAmt1, candidateAmt2];
 
+  // remove previous chart
   barChart.destroy();
 
+  // create new chart
   barChart = new Chart(ctx, configBar);
 
-} // end addChart
+} // end addBarChart()
 
 
 // Display comparison
@@ -155,12 +156,48 @@ function compareCandidates(selection) {
           candidateAmtCommas2 = addCommas(Comparison.getData[Comparison.two.index].total_contributions);
       break;
 
-    case "Total Disbursements" :
-      var candidateAmt1       = roundNum(Comparison.getData[Comparison.one.index].total_disbursements),
-          candidateAmt2       = roundNum(Comparison.getData[Comparison.two.index].total_disbursements);
+    case "Contribution by Amount: Under $200" :
+      var candidateAmt1       = roundNum(Comparison.getData[Comparison.one.index].contributions_less_than_200),
+          candidateAmt2       = roundNum(Comparison.getData[Comparison.two.index].contributions_less_than_200);
 
-      var candidateAmtCommas1 = addCommas(Comparison.getData[Comparison.one.index].total_disbursements),
-          candidateAmtCommas2 = addCommas(Comparison.getData[Comparison.two.index].total_disbursements);
+      var candidateAmtCommas1 = addCommas(Comparison.getData[Comparison.one.index].contributions_less_than_200),
+          candidateAmtCommas2 = addCommas(Comparison.getData[Comparison.two.index].contributions_less_than_200);
+      break;
+
+    case "Contribution by Amount: $200 to 499" :
+
+      var candidateAmt1       = roundNum(Comparison.getData[Comparison.one.index].contributions_200_499),
+          candidateAmt2       = roundNum(Comparison.getData[Comparison.two.index].contributions_200_499);
+
+      var candidateAmtCommas1 = addCommas(Comparison.getData[Comparison.one.index].contributions_200_499),
+          candidateAmtCommas2 = addCommas(Comparison.getData[Comparison.two.index].contributions_200_499);
+      break;
+
+    case "Contribution by Amount: $500 to 1,499" :
+
+      var candidateAmt1       = roundNum(Comparison.getData[Comparison.one.index].contributions_500_1499),
+          candidateAmt2       = roundNum(Comparison.getData[Comparison.two.index].contributions_500_1499);
+
+      var candidateAmtCommas1 = addCommas(Comparison.getData[Comparison.one.index].contributions_500_1499),
+          candidateAmtCommas2 = addCommas(Comparison.getData[Comparison.two.index].contributions_500_1499);
+      break;
+
+    case "Contribution by Amount: $1,500 to 2,699" :
+
+      var candidateAmt1       = roundNum(Comparison.getData[Comparison.one.index].contributions_1500_2699),
+          candidateAmt2       = roundNum(Comparison.getData[Comparison.two.index].contributions_1500_2699);
+
+      var candidateAmtCommas1 = addCommas(Comparison.getData[Comparison.one.index].contributions_1500_2699),
+          candidateAmtCommas2 = addCommas(Comparison.getData[Comparison.two.index].contributions_1500_2699);
+      break;
+
+    case "Contribution by Amount: Maximum" :
+
+      var candidateAmt1       = roundNum(Comparison.getData[Comparison.one.index].contributions_max),
+          candidateAmt2       = roundNum(Comparison.getData[Comparison.two.index].contributions_max);
+
+      var candidateAmtCommas1 = addCommas(Comparison.getData[Comparison.one.index].contributions_max),
+          candidateAmtCommas2 = addCommas(Comparison.getData[Comparison.two.index].contributions_max);
       break;
 
     case "Total Receipts" :
@@ -169,6 +206,14 @@ function compareCandidates(selection) {
 
       var candidateAmtCommas1 = addCommas(Comparison.getData[Comparison.one.index].total_receipts),
           candidateAmtCommas2 = addCommas(Comparison.getData[Comparison.two.index].total_receipts);
+      break;
+
+    case "Total Disbursements" :
+      var candidateAmt1       = roundNum(Comparison.getData[Comparison.one.index].total_disbursements),
+          candidateAmt2       = roundNum(Comparison.getData[Comparison.two.index].total_disbursements);
+
+      var candidateAmtCommas1 = addCommas(Comparison.getData[Comparison.one.index].total_disbursements),
+          candidateAmtCommas2 = addCommas(Comparison.getData[Comparison.two.index].total_disbursements);
       break;
 
     case "Independent Expenditures – Support" :
@@ -197,11 +242,11 @@ function compareCandidates(selection) {
       output += '</dl>';
 
   // display amounts and selection
-  $('#results').find('.title').text(selection);
+  $('#results').find('.results__title').text(selection);
   $('#result').html(output);
 
-  // display chart
-  addChart(candidateAmt1, candidateAmt2, candidateLabel1, candidateLabel2, selection);
+  // display bar chart
+  addBarChart(candidateAmt1, candidateAmt2, candidateLabel1, candidateLabel2, selection);
 
 } // end compareCandidates()
 
@@ -223,10 +268,3 @@ function addCommas(number) {
 function capitalize(slug) {
   return slug.charAt(0).toUpperCase() + slug.slice(1).toLowerCase()
 }
-
-
-//  Comparison.getData[index].date_coverage_to;
-//  Comparison.getData[index].contributions_200_499;
-//  Comparison.getData[index].contributions_500_1499;
-//  Comparison.getData[index].contributions_1500_2699;
-//  Comparison.getData[index].contributions_less_than_200;
