@@ -16,9 +16,9 @@
     <nav class="visuallyhidden focusable"><a href="#content">Skip to content</a></nav>
 
     <header role="banner" class="site-header">
-      <div class="container container--max">
-        <h1>Hillary Clinton vs. Donald Trump</h1>
-        <p>A 2016 Presidential Campaign Finance Comparison</p>
+      <div class="container container--med">
+        <h1 class="site-header__title"><span class="candidate1"></span> vs. <span class="candidate2"></span></h1>
+        <p class="site-header__tagline">A 2016 Presidential Campaign Finance Comparison</p>
       </div>
     </header>
 
@@ -38,10 +38,12 @@
                     <input type="radio" name="cash" id="cash" value="Cash on Hand">
                     <label for="cash" class="select-label">Cash on Hand</label>
                   </li>
+<!--
                   <li class="select-option">
-                    <input type="radio" name="contribution-levels" id="contribution-levels" value="Contribution Levels">
-                    <label for="contribution-levels" class="select-label">Contribution Levels</label>
+                    <input type="radio" name="contribution-levels" id="contribution-levels" value="Contribution by Amounts">
+                    <label for="contribution-levels" class="select-label">Contribution by Amounts</label>
                   </li>
+-->
                   <li class="select-option">
                     <input type="radio" name="total-contributions" id="total-contribution" value="Total Contributions">
                     <label for="total-contribution" class="select-label">Total Contributions</label>
@@ -55,11 +57,11 @@
                     <label for="total-receipts" class="select-label">Total Receipts</label>
                   </li>
                   <li class="select-option">
-                    <input type="radio" name="ind-expend-support" id="ind-expend-support" value="Independent Expenditures Support">
+                    <input type="radio" name="ind-expend-support" id="ind-expend-support" value="Independent Expenditures – Support">
                     <label for="ind-expend-support" class="select-label">Independent Expenditures &ndash; Support</label>
                   </li>
                   <li class="select-option">
-                    <input type="radio" name="ind-expend-oppose" id="ind-expend-oppose" value="Independent Expenditures Oppose">
+                    <input type="radio" name="ind-expend-oppose" id="ind-expend-oppose" value="Independent Expenditures – Oppose">
                     <label for="ind-expend-oppose" class="select-label">Independent Expenditures &ndash; Oppose</label>
                   </li>
                 </ul>
@@ -70,9 +72,15 @@
       </form>
 
       <div id="results" class="band">
-        <div class="container container--max">
-          <h2 class="band__title"></h2>
-          <div id="visual"></div>
+        <div class="container container--med">
+          <h2 class="band__title">Cash on Hand</h2>
+          <div id="result">
+            <dl>
+              <dt><strong>Clinton: </strong></dt><dd>$58,471,932</dd>
+              <dt><strong>Trump: </strong></dt><dd>$38,442,646</dd>
+            </dl>
+          </div>
+          <canvas id="visuals"></canvas>
         </div>
       </div><!-- end #results -->
 

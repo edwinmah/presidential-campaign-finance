@@ -12,6 +12,19 @@ body {
   }
 }
 
+dt,
+dd {
+  display: inline-block;
+  text-transform: uppercase;
+}
+
+dd {
+  margin-left: .625em;
+}
+
+dt:nth-of-type(2n) {
+  margin-left: 2em;
+}
 
 a {
   color: #176691;
@@ -75,6 +88,10 @@ html {
 }
 
 /* Content Bands */
+.band {
+  text-align: center;
+}
+
 .band:nth-child(odd) {
   background-color: #f4f4f4;
 }

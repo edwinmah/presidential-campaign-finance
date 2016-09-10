@@ -1,33 +1,46 @@
 var Candidate = {
-  index: 0,
-  name : "",
-  party: "",
+  one : {
+    index : 0,
+    name  : "",
+    party : ""
+  },
+  two : {
+    index : 0,
+    name  : "",
+    party : ""
+  },
   getData : []
 }
 
 
-// set-up URL
-var urlJSON = 'https://api.propublica.org/campaign-finance/v1/2016/president/totals.json';
-
 $.ajax({
-  url: urlJSON,
+  url: 'https://api.propublica.org/campaign-finance/v1/2016/president/totals.json',
   dataType: "json",
   type: "GET",
   beforeSend: function(xhr) {
     xhr.setRequestHeader('X-API-Key', 'tqIQ49k4JY7c2IczBaWGO5ApuGboqHhz6MtDhV6N')
   }
 })
-  .done(function(data){
+  .done(function(getData) {
 
-    //Candidate.getData.push(data.results);
-    Candidate.getData = data.results;
+    Candidate.getData = getData.results;
+
+    Candidate.one.index = 0;
+    Candidate.one.name  = Candidate.getData[Candidate.one.index].name;
+    Candidate.one.party = Candidate.getData[Candidate.one.index].party;
+
+    Candidate.two.index = 2;
+    Candidate.two.name  = Candidate.getData[Candidate.two.index].name;
+    Candidate.two.party = Candidate.getData[Candidate.two.index].party;
+
+    $('.candidate1').text(Candidate.one.name);
+    $('.candidate2').text(Candidate.two.name);
 
 })
-  .fail(function(jqXHR, error){
+  .fail(function(jqXHR, error) {
     var errorElem = showError(error);
-    $('#visual').append(errorElem);
+    $('#result').append(errorElem);
 });
-
 
 // takes error string and turns it into displayable DOM element
 var showError = function(error){
@@ -35,8 +48,6 @@ var showError = function(error){
   var errorText = '<p>' + error + '</p>';
   errorElem.append(errorText);
 };
-
-
 
 
 // Enter selected option into top label
@@ -48,119 +59,171 @@ $('.select-option').find('input').click(function() {
   // Change the text of checkbox label
   $(this).closest('.select').find('.toggle-label').text(selection);
 
-  //console.log(selection);
-
   // Check the selected radio input
   $(this).prop('checked', true);
 
   // Uncheck the checkbox input
   $('.toggle').prop('checked', false);
 
-  // Display the visual
+  // Display the comparison
+  compareCandidates(selection)
+
+}); // end .select-option click
+
+
+// Global values for Chart.js
+Chart.defaults.global.defaultFontSize   = 16;
+Chart.defaults.global.defaultFontColor  = '#222';
+Chart.defaults.global.defaultFontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif';
+Chart.defaults.global.legend.display    = false;
+
+
+// Chart.js
+var ctx = $('#visuals');
+
+var data = {
+  labels: ['Clinton', 'Trump'],
+  datasets: [
+    {
+      label: "Cash on Hand",
+      backgroundColor: [
+        'rgba(44, 77, 135, 0.6)',
+        'rgba(182, 34, 32, 0.6)'
+      ],
+      borderColor: [
+        'rgba(44, 77, 135, 0.6)',
+        'rgba(182, 34, 32, 0.6)'
+      ],
+      borderWidth: 1,
+      data: [58, 38]
+    }
+  ]
+};
+
+var configBar = {
+  type: 'horizontalBar',
+  data: data,
+  options: {
+    categoryPercentage: 1,
+    scales: {
+      xAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+}
+
+var barChart = new Chart(ctx, configBar);
+
+
+function addChart(candidateAmt1, candidateAmt2, candidateLabel1, candidateLabel2, selection, barChart) {
+
+  //ctx = $('#visuals');
+
+  // add data to Chart.js dataset
+  data.labels[0]           = candidateLabel1;
+  data.labels[1]           = candidateLabel2;
+  data.datasets[0].label   = selection;
+  data.datasets[0].data[0] = candidateAmt1;
+  data.datasets[0].data[1] = candidateAmt2;
+
+  //barChart.update();
+
+  barChart = new Chart(ctx, configBar);
+
+} // end addChart
+
+
+// Display comparison
+function compareCandidates(selection) {
+
+  // set-up variables
   switch (selection) {
     case "Cash on Hand" :
-      cash();
-      break;
+      var candidateAmt1       = roundNum(Candidate.getData[Candidate.one.index].cash_on_hand),
+          candidateAmt2       = roundNum(Candidate.getData[Candidate.two.index].cash_on_hand);
 
-    case "Total Receipts" :
-      receipts();
+      var candidateAmtCommas1 = addCommas(Candidate.getData[Candidate.one.index].cash_on_hand),
+          candidateAmtCommas2 = addCommas(Candidate.getData[Candidate.two.index].cash_on_hand);
       break;
 
     case "Total Contributions" :
-      contributions();
+      var candidateAmt1       = roundNum(Candidate.getData[Candidate.one.index].total_contributions),
+          candidateAmt2       = roundNum(Candidate.getData[Candidate.two.index].total_contributions);
+
+      var candidateAmtCommas1 = addCommas(Candidate.getData[Candidate.one.index].total_contributions),
+          candidateAmtCommas2 = addCommas(Candidate.getData[Candidate.two.index].total_contributions);
       break;
 
     case "Total Disbursements" :
-      disbursements();
+      var candidateAmt1       = roundNum(Candidate.getData[Candidate.one.index].total_disbursements),
+          candidateAmt2       = roundNum(Candidate.getData[Candidate.two.index].total_disbursements);
+
+      var candidateAmtCommas1 = addCommas(Candidate.getData[Candidate.one.index].total_disbursements),
+          candidateAmtCommas2 = addCommas(Candidate.getData[Candidate.two.index].total_disbursements);
       break;
 
-    case "Independent Expenditures Oppose" :
-      indepExpendOppose();
+    case "Total Receipts" :
+      var candidateAmt1       = roundNum(Candidate.getData[Candidate.one.index].total_receipts),
+          candidateAmt2       = roundNum(Candidate.getData[Candidate.two.index].total_receipts);
+
+      var candidateAmtCommas1 = addCommas(Candidate.getData[Candidate.one.index].total_receipts),
+          candidateAmtCommas2 = addCommas(Candidate.getData[Candidate.two.index].total_receipts);
       break;
 
-    case "Independent Expenditures Support" :
-      indepExpendSupport();
+    case "Independent Expenditures – Support" :
+      var candidateAmt1       = roundNum(Candidate.getData[Candidate.one.index].independent_expenditures_support),
+          candidateAmt2       = roundNum(Candidate.getData[Candidate.two.index].independent_expenditures_support);
+
+      var candidateAmtCommas1 = addCommas(Candidate.getData[Candidate.one.index].independent_expenditures_support),
+          candidateAmtCommas2 = addCommas(Candidate.getData[Candidate.two.index].independent_expenditures_support);
       break;
-  }
-console.log(Candidate.getData)
-});
+
+    case "Independent Expenditures – Oppose" :
+      var candidateAmt1       = roundNum(Candidate.getData[Candidate.one.index].independent_expenditures_oppose),
+          candidateAmt2       = roundNum(Candidate.getData[Candidate.two.index].independent_expenditures_oppose);
+
+      var candidateAmtCommas1 = addCommas(Candidate.getData[Candidate.one.index].independent_expenditures_oppose),
+          candidateAmtCommas2 = addCommas(Candidate.getData[Candidate.two.index].independent_expenditures_oppose);
+      break;
+  } // end switch
+
+  var candidateLabel1  = capitalize(Candidate.getData[Candidate.one.index].slug),
+      candidateLabel2  = capitalize(Candidate.getData[Candidate.two.index].slug);
+
+  var output  = '<dl>';
+      output += '<dt><strong>' + candidateLabel1 + ':</strong></dt><dd>$' + candidateAmtCommas1 + '</dd>';
+      output += '<dt><strong>' + candidateLabel2 + ':</strong></dt><dd>$' + candidateAmtCommas2 + '</dd>';
+      output += '</dl>';
+
+  // display amounts and selection
+  $('#results').find('.band__title').text(selection);
+  $('#result').html(output);
+
+  // display chart
+  addChart(candidateAmt1, candidateAmt2, candidateLabel1, candidateLabel2, selection, barChart);
+
+} // end compareCandidates()
 
 
-// Cash on Hand
-function cash() {
-  var cashClinton  = Math.round(Candidate.getData[0].cash_on_hand).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  var cashTrump    = Math.round(Candidate.getData[2].cash_on_hand).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-  var output  = '<p>Clinton: ' + cashClinton + '</p>';
-      output += '<p>Trump: '   + cashTrump   + '</p>';
-
-  $('#results').find('.band__title').text('Cash on Hand');
-  $('#visual').html(output);
-}
+// Round the numbers
+function roundNum(number) {
+  var factor = 1000000;
+  return Math.round(number/factor);
+} // end roundNum()
 
 
-// Total Receipts
-function receipts() {
-  var receiptsClinton  = Math.round(Candidate.getData[0].total_receipts).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  var receiptsTrump    = Math.round(Candidate.getData[2].total_receipts).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-  var output  = '<p>Clinton: ' + receiptsClinton + '</p>';
-      output += '<p>Trump: '   + receiptsTrump   + '</p>';
-
-  $('#results').find('.band__title').text('Total Receipts');
-  $('#visual').html(output);
-}
+// Format numbers with commas
+function addCommas(number) {
+  return Math.round(number).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+} // end addCommas()
 
 
-// Total Contributions
-function contributions() {
-  var contributionsClinton  = Math.round(Candidate.getData[0].total_contributions).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  var contributionsTrump    = Math.round(Candidate.getData[2].total_contributions).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-  var output  = '<p>Clinton: ' + contributionsClinton + '</p>';
-      output += '<p>Trump: '   + contributionsTrump   + '</p>';
-
-  $('#results').find('.band__title').text('Total Contributions');
-  $('#visual').html(output);
-}
-
-
-// Total Disbursements
-function disbursements() {
-  var disbursementsClinton  = Math.round(Candidate.getData[0].total_disbursements).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  var disbursementsTrump    = Math.round(Candidate.getData[2].total_disbursements).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-  var output  = '<p>Clinton: ' + disbursementsClinton + '</p>';
-      output += '<p>Trump: '   + disbursementsTrump   + '</p>';
-
-  $('#results').find('.band__title').text('Total Disbursements');
-  $('#visual').html(output);
-}
-
-
-// Independent Expenditures – Oppose
-function indepExpendOppose() {
-  var indepExpendOpposeClinton  = Math.round(Candidate.getData[0].independent_expenditures_oppose).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  var indepExpendOpposeTrump    = Math.round(Candidate.getData[2].independent_expenditures_oppose).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-  var output  = '<p>Clinton: ' + indepExpendOpposeClinton + '</p>';
-      output += '<p>Trump: '   + indepExpendOpposeTrump   + '</p>';
-
-  $('#results').find('.band__title').text('Independent Expenditures – Oppose');
-  $('#visual').html(output);
-}
-
-
-// Independent Expenditures – Support
-function indepExpendSupport() {
-  var indepExpendSupportClinton  = Math.round(Candidate.getData[0].independent_expenditures_support).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  var indepExpendSupportTrump    = Math.round(Candidate.getData[2].independent_expenditures_support).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-  var output  = '<p>Clinton: ' + indepExpendSupportClinton + '</p>';
-      output += '<p>Trump: '   + indepExpendSupportTrump   + '</p>';
-
-  $('#results').find('.band__title').text('Independent Expenditures – Support');
-  $('#visual').html(output);
+// Capitalize labels
+function capitalize(slug) {
+  return slug.charAt(0).toUpperCase() + slug.slice(1).toLowerCase()
 }
 
 
