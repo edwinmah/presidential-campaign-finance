@@ -75,7 +75,7 @@ $('.select-option').find('input').click(function() {
 
 
 // Global values for Chart.js
-Chart.defaults.global.defaultFontSize   = 16;
+Chart.defaults.global.defaultFontSize   = 14;
 Chart.defaults.global.defaultFontColor  = '#222';
 Chart.defaults.global.defaultFontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif';
 Chart.defaults.global.legend.display    = false;
