@@ -33,11 +33,13 @@ $.ajax({
     Comparison.two.name  = Comparison.getData[Comparison.two.index].name;
     Comparison.two.party = Comparison.getData[Comparison.two.index].party;
 
-    var dateCutoff = new Date(2016, 06, 31).toDateString();
+    var datetime         = Comparison.getData[Comparison.one.index].date_coverage_to,
+        dateCutoff       = new Date(datetime);
 
     $('.candidate1').text(Comparison.one.name);
     $('.candidate2').text(Comparison.two.name);
-    $('.date-cutoff').text(dateCutoff);
+    $('.site-header').find('.date-cutoff').attr('datetime', datetime)
+    $('.site-header').find('.date-cutoff').text(dateCutoff.toDateString());
 
 })
   .fail(function(jqXHR, error) {
@@ -116,8 +118,6 @@ var configBar = {
 var barChart = new Chart(ctx, configBar);
 
 
-
-
 // Create a new chart
 function addBarChart(candidateAmt1, candidateAmt2, candidateLabel1, candidateLabel2, selection) {
 
@@ -165,7 +165,6 @@ function compareCandidates(selection) {
       break;
 
     case "Contribution by Amount: $200 to 499" :
-
       var candidateAmt1       = roundNum(Comparison.getData[Comparison.one.index].contributions_200_499),
           candidateAmt2       = roundNum(Comparison.getData[Comparison.two.index].contributions_200_499);
 
@@ -174,7 +173,6 @@ function compareCandidates(selection) {
       break;
 
     case "Contribution by Amount: $500 to 1,499" :
-
       var candidateAmt1       = roundNum(Comparison.getData[Comparison.one.index].contributions_500_1499),
           candidateAmt2       = roundNum(Comparison.getData[Comparison.two.index].contributions_500_1499);
 
@@ -183,7 +181,6 @@ function compareCandidates(selection) {
       break;
 
     case "Contribution by Amount: $1,500 to 2,699" :
-
       var candidateAmt1       = roundNum(Comparison.getData[Comparison.one.index].contributions_1500_2699),
           candidateAmt2       = roundNum(Comparison.getData[Comparison.two.index].contributions_1500_2699);
 
@@ -192,7 +189,6 @@ function compareCandidates(selection) {
       break;
 
     case "Contribution by Amount: Maximum" :
-
       var candidateAmt1       = roundNum(Comparison.getData[Comparison.one.index].contributions_max),
           candidateAmt2       = roundNum(Comparison.getData[Comparison.two.index].contributions_max);
 
