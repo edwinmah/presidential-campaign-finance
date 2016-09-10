@@ -49,15 +49,21 @@ html {
 dt,
 dd {
   display: inline-block;
-  text-transform: uppercase;
 }
 
-dd {
-  margin-left: .625em;
-}
-
+dd,
 dt:nth-of-type(2n) {
-  margin-left: 2em;
+  margin-left: .25em;
+}
+
+@media (min-width: 22.5em) {
+  dd {
+    margin-left: .625em;
+  }
+
+  dt:nth-of-type(2n) {
+    margin-left: 2em;
+  }
 }
 
 /* Comparison Form */
@@ -71,7 +77,6 @@ dt:nth-of-type(2n) {
 legend {
   margin-bottom: 1em;
   font-size: 1.25em;
-/*  font-weight: bold;*/
 }
 
 fieldset {
