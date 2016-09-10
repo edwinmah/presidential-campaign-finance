@@ -1,4 +1,4 @@
-var Candidate = {
+var Comparison = {
   one : {
     index : 0,
     name  : "",
@@ -23,18 +23,18 @@ $.ajax({
 })
   .done(function(getData) {
 
-    Candidate.getData = getData.results;
+    Comparison.getData = getData.results;
 
-    Candidate.one.index = 0;
-    Candidate.one.name  = Candidate.getData[Candidate.one.index].name;
-    Candidate.one.party = Candidate.getData[Candidate.one.index].party;
+    Comparison.one.index = 0;
+    Comparison.one.name  = Comparison.getData[Comparison.one.index].name;
+    Comparison.one.party = Comparison.getData[Comparison.one.index].party;
 
-    Candidate.two.index = 2;
-    Candidate.two.name  = Candidate.getData[Candidate.two.index].name;
-    Candidate.two.party = Candidate.getData[Candidate.two.index].party;
+    Comparison.two.index = 2;
+    Comparison.two.name  = Comparison.getData[Comparison.two.index].name;
+    Comparison.two.party = Comparison.getData[Comparison.two.index].party;
 
-    $('.candidate1').text(Candidate.one.name);
-    $('.candidate2').text(Candidate.two.name);
+    $('.candidate1').text(Comparison.one.name);
+    $('.candidate2').text(Comparison.two.name);
 
 })
   .fail(function(jqXHR, error) {
@@ -118,9 +118,7 @@ var configBar = {
 var barChart = new Chart(ctx, configBar);
 
 
-function addChart(candidateAmt1, candidateAmt2, candidateLabel1, candidateLabel2, selection, barChart) {
-
-  //ctx = $('#visuals');
+function addChart(candidateAmt1, candidateAmt2, candidateLabel1, candidateLabel2, selection) {
 
   // add data to Chart.js dataset
   data.labels[0]           = candidateLabel1;
@@ -129,7 +127,7 @@ function addChart(candidateAmt1, candidateAmt2, candidateLabel1, candidateLabel2
   data.datasets[0].data[0] = candidateAmt1;
   data.datasets[0].data[1] = candidateAmt2;
 
-  //barChart.update();
+  barChart.destroy();
 
   barChart = new Chart(ctx, configBar);
 
@@ -142,56 +140,56 @@ function compareCandidates(selection) {
   // set-up variables
   switch (selection) {
     case "Cash on Hand" :
-      var candidateAmt1       = roundNum(Candidate.getData[Candidate.one.index].cash_on_hand),
-          candidateAmt2       = roundNum(Candidate.getData[Candidate.two.index].cash_on_hand);
+      var candidateAmt1       = roundNum(Comparison.getData[Comparison.one.index].cash_on_hand),
+          candidateAmt2       = roundNum(Comparison.getData[Comparison.two.index].cash_on_hand);
 
-      var candidateAmtCommas1 = addCommas(Candidate.getData[Candidate.one.index].cash_on_hand),
-          candidateAmtCommas2 = addCommas(Candidate.getData[Candidate.two.index].cash_on_hand);
+      var candidateAmtCommas1 = addCommas(Comparison.getData[Comparison.one.index].cash_on_hand),
+          candidateAmtCommas2 = addCommas(Comparison.getData[Comparison.two.index].cash_on_hand);
       break;
 
     case "Total Contributions" :
-      var candidateAmt1       = roundNum(Candidate.getData[Candidate.one.index].total_contributions),
-          candidateAmt2       = roundNum(Candidate.getData[Candidate.two.index].total_contributions);
+      var candidateAmt1       = roundNum(Comparison.getData[Comparison.one.index].total_contributions),
+          candidateAmt2       = roundNum(Comparison.getData[Comparison.two.index].total_contributions);
 
-      var candidateAmtCommas1 = addCommas(Candidate.getData[Candidate.one.index].total_contributions),
-          candidateAmtCommas2 = addCommas(Candidate.getData[Candidate.two.index].total_contributions);
+      var candidateAmtCommas1 = addCommas(Comparison.getData[Comparison.one.index].total_contributions),
+          candidateAmtCommas2 = addCommas(Comparison.getData[Comparison.two.index].total_contributions);
       break;
 
     case "Total Disbursements" :
-      var candidateAmt1       = roundNum(Candidate.getData[Candidate.one.index].total_disbursements),
-          candidateAmt2       = roundNum(Candidate.getData[Candidate.two.index].total_disbursements);
+      var candidateAmt1       = roundNum(Comparison.getData[Comparison.one.index].total_disbursements),
+          candidateAmt2       = roundNum(Comparison.getData[Comparison.two.index].total_disbursements);
 
-      var candidateAmtCommas1 = addCommas(Candidate.getData[Candidate.one.index].total_disbursements),
-          candidateAmtCommas2 = addCommas(Candidate.getData[Candidate.two.index].total_disbursements);
+      var candidateAmtCommas1 = addCommas(Comparison.getData[Comparison.one.index].total_disbursements),
+          candidateAmtCommas2 = addCommas(Comparison.getData[Comparison.two.index].total_disbursements);
       break;
 
     case "Total Receipts" :
-      var candidateAmt1       = roundNum(Candidate.getData[Candidate.one.index].total_receipts),
-          candidateAmt2       = roundNum(Candidate.getData[Candidate.two.index].total_receipts);
+      var candidateAmt1       = roundNum(Comparison.getData[Comparison.one.index].total_receipts),
+          candidateAmt2       = roundNum(Comparison.getData[Comparison.two.index].total_receipts);
 
-      var candidateAmtCommas1 = addCommas(Candidate.getData[Candidate.one.index].total_receipts),
-          candidateAmtCommas2 = addCommas(Candidate.getData[Candidate.two.index].total_receipts);
+      var candidateAmtCommas1 = addCommas(Comparison.getData[Comparison.one.index].total_receipts),
+          candidateAmtCommas2 = addCommas(Comparison.getData[Comparison.two.index].total_receipts);
       break;
 
     case "Independent Expenditures – Support" :
-      var candidateAmt1       = roundNum(Candidate.getData[Candidate.one.index].independent_expenditures_support),
-          candidateAmt2       = roundNum(Candidate.getData[Candidate.two.index].independent_expenditures_support);
+      var candidateAmt1       = roundNum(Comparison.getData[Comparison.one.index].independent_expenditures_support),
+          candidateAmt2       = roundNum(Comparison.getData[Comparison.two.index].independent_expenditures_support);
 
-      var candidateAmtCommas1 = addCommas(Candidate.getData[Candidate.one.index].independent_expenditures_support),
-          candidateAmtCommas2 = addCommas(Candidate.getData[Candidate.two.index].independent_expenditures_support);
+      var candidateAmtCommas1 = addCommas(Comparison.getData[Comparison.one.index].independent_expenditures_support),
+          candidateAmtCommas2 = addCommas(Comparison.getData[Comparison.two.index].independent_expenditures_support);
       break;
 
     case "Independent Expenditures – Oppose" :
-      var candidateAmt1       = roundNum(Candidate.getData[Candidate.one.index].independent_expenditures_oppose),
-          candidateAmt2       = roundNum(Candidate.getData[Candidate.two.index].independent_expenditures_oppose);
+      var candidateAmt1       = roundNum(Comparison.getData[Comparison.one.index].independent_expenditures_oppose),
+          candidateAmt2       = roundNum(Comparison.getData[Comparison.two.index].independent_expenditures_oppose);
 
-      var candidateAmtCommas1 = addCommas(Candidate.getData[Candidate.one.index].independent_expenditures_oppose),
-          candidateAmtCommas2 = addCommas(Candidate.getData[Candidate.two.index].independent_expenditures_oppose);
+      var candidateAmtCommas1 = addCommas(Comparison.getData[Comparison.one.index].independent_expenditures_oppose),
+          candidateAmtCommas2 = addCommas(Comparison.getData[Comparison.two.index].independent_expenditures_oppose);
       break;
   } // end switch
 
-  var candidateLabel1  = capitalize(Candidate.getData[Candidate.one.index].slug),
-      candidateLabel2  = capitalize(Candidate.getData[Candidate.two.index].slug);
+  var candidateLabel1  = capitalize(Comparison.getData[Comparison.one.index].slug),
+      candidateLabel2  = capitalize(Comparison.getData[Comparison.two.index].slug);
 
   var output  = '<dl>';
       output += '<dt><strong>' + candidateLabel1 + ':</strong></dt><dd>$' + candidateAmtCommas1 + '</dd>';
@@ -199,11 +197,11 @@ function compareCandidates(selection) {
       output += '</dl>';
 
   // display amounts and selection
-  $('#results').find('.band__title').text(selection);
+  $('#results').find('.title').text(selection);
   $('#result').html(output);
 
   // display chart
-  addChart(candidateAmt1, candidateAmt2, candidateLabel1, candidateLabel2, selection, barChart);
+  addChart(candidateAmt1, candidateAmt2, candidateLabel1, candidateLabel2, selection);
 
 } // end compareCandidates()
 
@@ -227,8 +225,8 @@ function capitalize(slug) {
 }
 
 
-//  Candidate.getData[index].date_coverage_to;
-//  Candidate.getData[index].contributions_200_499;
-//  Candidate.getData[index].contributions_500_1499;
-//  Candidate.getData[index].contributions_1500_2699;
-//  Candidate.getData[index].contributions_less_than_200;
+//  Comparison.getData[index].date_coverage_to;
+//  Comparison.getData[index].contributions_200_499;
+//  Comparison.getData[index].contributions_500_1499;
+//  Comparison.getData[index].contributions_1500_2699;
+//  Comparison.getData[index].contributions_less_than_200;
