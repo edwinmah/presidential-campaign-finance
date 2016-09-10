@@ -1,6 +1,6 @@
 body {
   background: #ffffff;
-  color: #222;
+  color: #222222;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: 87.5%;
   line-height: 1.5;
@@ -22,18 +22,8 @@ html {
 }
 
 .container {
-  margin: 3em auto;
+  margin: 0 auto;
   max-width: 91.25%;
-}
-
-.container::before,
-.container::after {
-  display: table;
-  content: " ";
-}
-
-.container::after {
-  clear: both;
 }
 
 .container--med {
@@ -41,6 +31,37 @@ html {
 }
 
 /* Site Header & Content */
+.site-header {
+  position: relative;
+  height: 25em;
+  color: #ffffff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, .7);
+  background: #666666 url('../images/polling-station.jpg') no-repeat 0 50%;
+  background-size: cover;
+}
+
+.site-header::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: "";
+  background-color: rgba(34, 34, 34, .7);
+}
+
+.site-header__branding {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -70%);
+          transform: translate(-50%, -70%);
+}
+
+.site-header__tagline {
+  font-style: italic;
+}
+
 .site-header,
 .results {
   text-align: center;
@@ -66,12 +87,17 @@ dt:nth-of-type(2n) {
   }
 }
 
+main {
+  position: relative;
+  top: -6em;
+}
+
 /* Comparison Form */
 .compare-form {
   margin-bottom: 3em;
-  padding: 2em 1em;
+  padding: 1em 1em 3em;
   border-radius: 4px;
-  background-color: #f4f4f4;
+  background-color: rgba(255, 255, 255, .7);
 }
 
 legend {
@@ -106,8 +132,10 @@ fieldset {
   z-index: 2;
   width: 100%;
   padding: 1em;
-  background: #fff;
-  color: #305563;
+  border: 1px solid #eeeeee;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #176691;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -135,7 +163,7 @@ fieldset {
 }
 
 .select li:not(:last-child) {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #e6e6e6;
 }
 
 .toggle:checked ~ ul {
@@ -146,15 +174,15 @@ fieldset {
 .select-label {
   display: block;
   padding: 1em;
-  background-color: #e9e9e9;
-  color: #2f2f2f;
+  background-color: #f6f6f6;
+  color: #222222;
   font-weight: bold;
   text-transform: uppercase;
 }
 
 .select-label:hover,
 .select-label:focus {
-  background-color: #D6D1D1;
+  background-color: #f2f2f2;
 }
 
 .error {

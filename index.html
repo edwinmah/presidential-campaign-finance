@@ -17,21 +17,22 @@
 
     <header role="banner" class="site-header">
       <div class="container container--med">
-        <h1 class="site-header__title"><span class="candidate1">Hillary Clinton</span> vs. <span class="candidate2">Donald J. Trump</span></h1>
-        <p class="site-header__tagline">A 2016 Presidential Campaign Finance Comparison (through <time datetime="" class="date-cutoff"></time>)</p>
+        <div class="site-header__branding">
+          <h1 class="site-header__title"><span class="candidate1">Hillary Clinton</span> vs. <span class="candidate2">Donald J. Trump</span></h1>
+          <p class="site-header__tagline">A 2016 Presidential Campaign Finance Comparison (through <time datetime="" class="date-cutoff"></time>)</p>
+        </div>
       </div>
     </header>
 
-    <main id="content">
-
-      <form id="compare" class="compare-form">
-        <div class="container container--med">
+    <div class="container container--med">
+      <main id="content">
+        <form id="compare" class="compare-form">
           <fieldset class="select-inputs">
             <legend class="visuallyhidden focusable">Select an item to compare between the candidates</legend>
             <div id="options" class="options">
               <div class="select">
-                <input type="checkbox" id="toggleThree" class="toggle">
-                <label for="toggleThree" class="toggle-label angle">Select an item for comparison</label>
+                <input type="checkbox" id="toggle" class="toggle">
+                <label for="toggle" class="toggle-label angle">Select an item for comparison</label>
 
                 <ul class="select-list">
                   <li class="select-option">
@@ -82,11 +83,9 @@
               </div><!-- end .select -->
             </div><!-- end #options -->
           </fieldset>
-        </div><!-- end .container -->
-      </form>
+        </form>
 
-      <div id="results" class="results">
-        <div class="container container--med">
+        <div id="results" class="results">
           <h2 class="results__title">Cash on Hand</h2>
           <div id="result">
             <dl>
@@ -95,13 +94,13 @@
             </dl>
           </div>
           <canvas id="visuals"></canvas>
-        </div>
-      </div><!-- end #results -->
+        </div><!-- end #results -->
 
-      <div class="error">
-        <p>Uh-oh! Something went wrong with your request. Here&rsquo;s what we know:</p>
-      </div>
-    </main>
+        <div class="error">
+          <p>Uh-oh! Something went wrong with your request. Here&rsquo;s what we know:</p>
+        </div>
+      </main>
+    </div><!-- end .container -->
 
 
     <script src="js/jquery-3.1.0.min.js"></script>
