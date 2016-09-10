@@ -67,10 +67,6 @@ html {
   width: 48em;
 }
 
-.container--max {
-  width: 60em;
-}
-
 /* Grid */
 .full {
   padding-left: 1.3889%;
@@ -96,7 +92,7 @@ html {
   background-color: #f4f4f4;
 }
 
-/* Compare Form */
+/* Comparison Form */
 .compare-form {
   margin-bottom: 3em;
   padding: 2em 1em;
