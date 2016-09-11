@@ -156,7 +156,7 @@ function compareCandidates(selection) {
           candidateAmtCommas2 = addCommas(Comparison.getData[Comparison.two.index].total_contributions);
       break;
 
-    case "Contribution by Amount: Under $200" :
+    case "Contributions under $200" :
       var candidateAmt1       = roundNum(Comparison.getData[Comparison.one.index].contributions_less_than_200),
           candidateAmt2       = roundNum(Comparison.getData[Comparison.two.index].contributions_less_than_200);
 
@@ -164,7 +164,7 @@ function compareCandidates(selection) {
           candidateAmtCommas2 = addCommas(Comparison.getData[Comparison.two.index].contributions_less_than_200);
       break;
 
-    case "Contribution by Amount: $200 to 499" :
+    case "Contributions from $200 to 499" :
       var candidateAmt1       = roundNum(Comparison.getData[Comparison.one.index].contributions_200_499),
           candidateAmt2       = roundNum(Comparison.getData[Comparison.two.index].contributions_200_499);
 
@@ -172,7 +172,7 @@ function compareCandidates(selection) {
           candidateAmtCommas2 = addCommas(Comparison.getData[Comparison.two.index].contributions_200_499);
       break;
 
-    case "Contribution by Amount: $500 to 1,499" :
+    case "Contributions from $500 to 1,499" :
       var candidateAmt1       = roundNum(Comparison.getData[Comparison.one.index].contributions_500_1499),
           candidateAmt2       = roundNum(Comparison.getData[Comparison.two.index].contributions_500_1499);
 
@@ -180,7 +180,7 @@ function compareCandidates(selection) {
           candidateAmtCommas2 = addCommas(Comparison.getData[Comparison.two.index].contributions_500_1499);
       break;
 
-    case "Contribution by Amount: $1,500 to 2,699" :
+    case "Contributions from $1,500 to 2,699" :
       var candidateAmt1       = roundNum(Comparison.getData[Comparison.one.index].contributions_1500_2699),
           candidateAmt2       = roundNum(Comparison.getData[Comparison.two.index].contributions_1500_2699);
 
@@ -188,7 +188,7 @@ function compareCandidates(selection) {
           candidateAmtCommas2 = addCommas(Comparison.getData[Comparison.two.index].contributions_1500_2699);
       break;
 
-    case "Contribution by Amount: Maximum" :
+    case "Contributions at the maximum limit" :
       var candidateAmt1       = roundNum(Comparison.getData[Comparison.one.index].contributions_max),
           candidateAmt2       = roundNum(Comparison.getData[Comparison.two.index].contributions_max);
 
