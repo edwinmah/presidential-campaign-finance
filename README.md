@@ -7,7 +7,7 @@ Candidates are required to file campaign finance reports for each month by the 2
 If you would like more campaign finance, there are several publicly available resources that offer comprehensive data on other candidates (Presidential and Congressional) committee contributions, personal finances, etc. Here are a few:
 
 * [OpenSecrets - Politicians & Elections](http://www.opensecrets.org/elections/) by the Center for Responsive Politics
-* [Real-Time Federal Campaign Finance](http://realtime.influenceexplorer.com/newest-filings/#?ordering=-filing_number&time_range=2016_cycle) by the Sunlight Foundation
+* [Real-Time Federal Campaign Finance](http://realtime.influenceexplorer.com/newest-filings/#?ordering=-filing_number&time_range=2016_cycle) by the [Sunlight Foundation](https://sunlightfoundation.com/)
 * Federal Election Commission sites:
 	* [Campaign Finance and Data](http://www.fec.gov/disclosure.shtml)
 	* [Candidate and Committee Viewer](http://www.fec.gov/finance/disclosure/candcmte_info.shtml)
