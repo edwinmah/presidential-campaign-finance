@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,6 +8,9 @@
 
     <link rel="stylesheet" href="css/normalize.min.css">
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- replace no-js class with js if JavaScript is enabled -->
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
 
   </head>
 
@@ -102,10 +105,109 @@
       </div><!-- end .container -->
     </main>
 
+    <footer role="contentinfo" class="site-footer">
+     <div class="container container--med">
+        <ul class="resources">
+          <li class="resources__item">
+            <a href="#about-site" id="about-link" data-action="modal-open">About this Site</a>
+          </li>
+          <li class="resources__item">
+            <a href="#campaign-finance-resources" id="campaign-resources-link" data-action="modal-open">Campaign Finance Resources</a>
+          </li>
+          <li class="resources__item">
+            <a href="#voting-resources" id="voting-resources-link" data-action="modal-open">Voting Resources</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
 
+    <div id="about-site" class="a11y-modal">
+      <div class="modal">
+        <header class="modal__intro">
+          <h3 class="modal__intro__title">About this Site</h3>
+        </header>
+        <div class="modal__content">
+          <p>Use this site to compare selected campaign finance data for Hillary Clinton and Donald Trump. All data was accessed using <a href="https://www.propublica.org/">ProPublica&rsquo;s</a> <a href="https://propublica.github.io/campaign-finance-api-docs/">Campaign Finance API</a>, which in turn retrieves campaign finance data from the <a href="http://www.fec.gov/">US Federal Election Commission</a> (FEC).</p>
+
+          <p>Candidates are required to file campaign finance reports for each month by the 20<sup>th</sup> day of the following month. For example, candidates must file July 2016 reports by August 20. Because reports are filed electronically, this site will automatically update once candidate reports are filed with the FEC.</p>
+        </div> <!-- /.modal__content -->
+        <div class="modal__outro">
+          <a data-modal-close
+             class="modal__outro__close"
+             href="#about-link">
+            <svg role="presentation" viewBox="0 0 20 20" height="20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 10.5l8.646-8.646a.5.5 0 0 0-.707-.707L10 9.793 1.354 1.147a.5.5 0 0 0-.707.707L9.293 10.5.647 19.146a.5.5 0 0 0 .708.707l8.646-8.646 8.646 8.646a.498.498 0 0 0 .708 0 .5.5 0 0 0 0-.707L10.709 10.5z"/></svg>
+          </a>
+        </div> <!-- .modal__outro -->
+      </div> <!-- end .modal -->
+    </div> <!-- .a11y-modal -->
+
+    <div id="campaign-finance-resources" class="a11y-modal">
+      <div class="modal">
+        <header class="modal__intro">
+          <h3 class="modal__intro__title">Campaign Finance Resources</h3>
+        </header>
+        <div class="modal__content">
+          <p>If you would like more campaign finance, there are several publicly available resources that offer comprehensive data on other candidates (Presidential and Congressional) committee contributions, personal finances, etc. Here are a few:</p>
+
+          <ul class="modal__list">
+            <li class="modal__item">
+              <a href="http://www.opensecrets.org/elections/">OpenSecrets - Politicians &amp; Elections</a> by the Center for Responsive Politics
+            </li>
+            <li class="modal__item">
+              <a href="http://realtime.influenceexplorer.com/newest-filings/#?ordering=-filing_number&amp;time_range=2016_cycle">Real-Time Federal Campaign Finance</a> by the Sunlight Foundation
+            </li>
+            <li class="modal__item">Federal Election Commission sites:
+              <ul class="modal__list--sub-list">
+                <li>
+                  <a href="http://www.fec.gov/disclosure.shtml">Campaign Finance and Data</a>
+                </li>
+                <li>
+                  <a href="http://www.fec.gov/finance/disclosure/candcmte_info.shtml">Candidate and Committee Viewer</a>
+                </li>
+                <li>
+                  <a href="http://www.fec.gov/disclosurep/pnational.do">2016 Presidential Campaign Finance</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div> <!-- /.modal__content -->
+        <div class="modal__outro">
+          <a data-modal-close
+             class="modal__outro__close"
+             href="#campaign-resources-link">
+            <svg role="presentation" viewBox="0 0 20 20" height="20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 10.5l8.646-8.646a.5.5 0 0 0-.707-.707L10 9.793 1.354 1.147a.5.5 0 0 0-.707.707L9.293 10.5.647 19.146a.5.5 0 0 0 .708.707l8.646-8.646 8.646 8.646a.498.498 0 0 0 .708 0 .5.5 0 0 0 0-.707L10.709 10.5z"/></svg>
+          </a>
+        </div> <!-- .modal__outro -->
+      </div> <!-- end .modal -->
+    </div> <!-- .a11y-modal -->
+
+    <div id="voting-resources" class="a11y-modal">
+      <div class="modal">
+        <header class="modal__intro">
+          <h3 class="modal__intro__title">Voting Resources</h3>
+        </header>
+        <div class="modal__content">
+          <p>If you are not registered to vote, need to find a polling place, or need other election information, here are a few voting resources:</p>
+
+          <ul class="modal__list">
+            <li class="modal__item"><a href="https://vote.usa.gov/">Voter Registration</a> by USA.gov</li>
+            <li class="modal__item">Find your polling place at <a href="http://www.vote411.org/">Vote411.org</a></li class="modal__item">
+            <li class="modal__item"><a href="https://www.usa.gov/election-day">Voting in Person on Election Day</a> by USA.gov</li>
+          </ul>
+        </div> <!-- /.modal__content -->
+        <div class="modal__outro">
+          <a data-modal-close
+             class="modal__outro__close"
+             href="#voting-resources-link">
+            <svg role="presentation" viewBox="0 0 20 20" height="20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 10.5l8.646-8.646a.5.5 0 0 0-.707-.707L10 9.793 1.354 1.147a.5.5 0 0 0-.707.707L9.293 10.5.647 19.146a.5.5 0 0 0 .708.707l8.646-8.646 8.646 8.646a.498.498 0 0 0 .708 0 .5.5 0 0 0 0-.707L10.709 10.5z"/></svg>
+          </a>
+        </div> <!-- .modal__outro -->
+      </div> <!-- end .modal -->
+    </div> <!-- .a11y-modal -->
 
     <script src="js/jquery-3.1.0.min.js"></script>
     <script src="js/Chart.min.js"></script>
+    <script src="js/a11y.modal.min.js"></script>
     <script src="js/app.js"></script>
 
   </body>
