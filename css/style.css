@@ -71,7 +71,7 @@ html {
   height: 25em;
   color: #ffffff;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, .7);
-  background: #666666 url('../images/polling-station.jpg') no-repeat 0 65%;
+  background: #666666 url('../images/polling-station.jpg') no-repeat 0 50%;
   background-size: cover;
 }
 
@@ -89,6 +89,7 @@ html {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 80%;
   -webkit-transform: translate(-50%, -70%);
           transform: translate(-50%, -70%);
 }
@@ -166,7 +167,7 @@ fieldset {
   position: relative;
   z-index: 2;
   width: 100%;
-  padding: 1em;
+  padding: 1em 2em 1em 1em;
   border: 1px solid #eeeeee;
   border-radius: 4px;
   background: #ffffff;
@@ -201,7 +202,7 @@ fieldset {
 }
 
 .toggle:checked ~ ul {
-  max-height: 40em;
+  max-height: 60em;
   z-index: 100;
 }
 
@@ -226,15 +227,15 @@ fieldset {
 /* Footer Resources */
 .site-footer {
   margin-bottom: 3em;
+  text-align: center;
 }
 
 .resources {
   margin: 0;
   padding: 3em 0 0;
-  border-top: 1px solid #f2f2f2;
+  border-top: 1px solid #e6e6e6;
   list-style: none;
   font-weight: 700;
-  text-align: center;
 }
 
 .resources__item > a {
@@ -255,6 +256,10 @@ fieldset {
   .resources__item > a {
     padding: 2em 0.875em;
   }
+}
+
+.current {
+  font-size: 87.5%;
 }
 
 /** -------------------
