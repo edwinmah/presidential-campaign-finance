@@ -38,8 +38,8 @@ $.ajax({
 
     $('.candidate1').text(Comparison.one.name);
     $('.candidate2').text(Comparison.two.name);
-    $('.site-header').find('.date-cutoff').attr('datetime', datetime)
-    $('.site-header').find('.date-cutoff').text(dateCutoff.toDateString());
+    $('.site-footer').find('.date-cutoff').attr('datetime', datetime)
+    $('.site-footer').find('.date-cutoff').text(dateCutoff.toDateString());
 
 })
   .fail(function(jqXHR, error) {
