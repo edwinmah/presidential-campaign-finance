@@ -26,18 +26,11 @@ $.ajax({
     Comparison.getData = getData.results;
 
     Comparison.one.index = 0;
-    Comparison.one.name  = Comparison.getData[Comparison.one.index].name;
-    Comparison.one.party = Comparison.getData[Comparison.one.index].party;
-
     Comparison.two.index = 2;
-    Comparison.two.name  = Comparison.getData[Comparison.two.index].name;
-    Comparison.two.party = Comparison.getData[Comparison.two.index].party;
 
     var datetime         = Comparison.getData[Comparison.one.index].date_coverage_to,
         dateCutoff       = new Date(datetime);
 
-    $('.candidate1').text(Comparison.one.name);
-    $('.candidate2').text(Comparison.two.name);
     $('.site-footer').find('.date-cutoff').attr('datetime', datetime)
     $('.site-footer').find('.date-cutoff').text(dateCutoff.toDateString());
 
