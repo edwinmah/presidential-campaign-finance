@@ -1,8 +1,10 @@
-# About this site
+# Presidential Campaign Finance
 
 Use this site to compare selected campaign finance data for Hillary Clinton and Donald Trump. All data was accessed using [ProPublica's](https://www.propublica.org/) [Campaign Finance API](https://propublica.github.io/campaign-finance-api-docs/), which in turn retrieves campaign finance data from the [US Federal Election Commission](http://www.fec.gov/) (FEC).
 
 Candidates are required to file campaign finance reports for each month by the 20<sup>th</sup> day of the following month. For example, candidates must file July 2016 reports by August 20. Because reports are filed electronically, this site will automatically update once candidate reports are filed with the FEC.
+
+![Presidential Campaign Finance app](images/screenshot.png)
 
 If you would like more campaign finance, there are several publicly available resources that offer comprehensive data on other candidates (Presidential and Congressional) committee contributions, personal finances, etc. Here are a few:
 
