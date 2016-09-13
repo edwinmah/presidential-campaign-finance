@@ -249,11 +249,11 @@ function roundNum(number) {
 
 // Format numbers with commas
 function addCommas(number) {
-  return Math.round(number).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  return Math.round(number).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 } // end addCommas()
 
 
 // Capitalize labels
 function capitalize(slug) {
-  return slug.charAt(0).toUpperCase() + slug.slice(1).toLowerCase()
+  return slug.charAt(0).toUpperCase() + slug.slice(1).toLowerCase();
 }
