@@ -214,7 +214,6 @@ fieldset {
 
 .toggle:checked ~ ul {
   max-height: 60em;
-  z-index: 100;
 }
 
 .select-label {
