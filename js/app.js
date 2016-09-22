@@ -23,13 +23,15 @@ $.ajax({
 })
   .done(function(getData) {
 
-    Comparison.getData = getData.results;
+    Comparison.getData   = getData.results;
 
     Comparison.one.index = 0;
     Comparison.two.index = 2;
 
-    var datetime         = Comparison.getData[Comparison.one.index].date_coverage_to,
-        dateCutoff       = new Date(datetime);
+    compareCandidates('Cash on Hand');
+
+    var datetime   = Comparison.getData[Comparison.one.index].date_coverage_to,
+        dateCutoff = new Date(datetime);
 
     $('.site-footer').find('.date-cutoff').attr('datetime', datetime)
     $('.site-footer').find('.date-cutoff').text(dateCutoff.toDateString());
@@ -80,10 +82,10 @@ Chart.defaults.global.legend.display    = false;
 var ctx = $('#visuals');
 
 var data = {
-  labels: ['Clinton', 'Trump'],
+  labels: [],
   datasets: [
     {
-      label: "Cash on Hand",
+      label: '',
       backgroundColor: [
         'rgba(44, 77, 135, 0.6)',
         'rgba(182, 34, 32, 0.6)'
@@ -92,7 +94,7 @@ var data = {
         'rgba(44, 77, 135, 0.6)',
         'rgba(182, 34, 32, 0.6)'
       ],
-      data: [58, 38]
+      data: []
     }
   ]
 };
