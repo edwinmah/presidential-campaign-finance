@@ -30,10 +30,11 @@ $.ajax({
 
     compareCandidates('Cash on Hand');
 
-    var datetime   = Comparison.getData[Comparison.one.index].date_coverage_to,
-        dateCutoff = new Date(datetime);
+    var date       = Comparison.getData[Comparison.one.index].date_coverage_to,
+        dateCommas = date.split('-').join(','),
+        dateCutoff = new Date(dateCommas);
 
-    $('.site-footer').find('.date-cutoff').attr('datetime', datetime)
+    $('.site-footer').find('.date-cutoff').attr('datetime', date)
     $('.site-footer').find('.date-cutoff').text(dateCutoff.toDateString());
 
 })
