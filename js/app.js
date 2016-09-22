@@ -28,6 +28,9 @@ $.ajax({
     Comparison.one.index = 0;
     Comparison.two.index = 2;
 
+    Comparison.one.name = Comparison.getData[Comparison.one.index].name;
+    Comparison.two.name = Comparison.getData[Comparison.two.index].name;
+
     compareCandidates('Cash on Hand');
 
     var date       = Comparison.getData[Comparison.one.index].date_coverage_to,
@@ -36,6 +39,9 @@ $.ajax({
 
     $('.site-footer').find('.date-cutoff').attr('datetime', date)
     $('.site-footer').find('.date-cutoff').text(dateCutoff.toDateString());
+
+    $('.candidate1').text(Comparison.one.name);
+    $('.candidate2').text(Comparison.two.name);
 
 })
   .fail(function(jqXHR, error) {
