@@ -26,7 +26,7 @@ $.ajax({
     Comparison.getData   = getData.results;
 
     Comparison.one.index = 0;
-    Comparison.two.index = 2;
+    Comparison.two.index = 1;
 
     Comparison.one.name = Comparison.getData[Comparison.one.index].name;
     Comparison.two.name = Comparison.getData[Comparison.two.index].name;
