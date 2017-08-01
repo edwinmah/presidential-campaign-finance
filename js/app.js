@@ -17,7 +17,6 @@ $.ajax({
   url: 'https://api.propublica.org/campaign-finance/v1/2016/president/totals.json',
   dataType: "json",
   type: "GET",
-  headers: {'Access-Control-Allow-Origin': '*'},
   beforeSend: function(xhr) {
     xhr.setRequestHeader('X-API-Key', 'tqIQ49k4JY7c2IczBaWGO5ApuGboqHhz6MtDhV6N')
   }
