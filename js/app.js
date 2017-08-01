@@ -21,7 +21,7 @@ $.ajax({
   // beforeSend: function(xhr) {
   //   xhr.setRequestHeader('X-API-Key', 'tqIQ49k4JY7c2IczBaWGO5ApuGboqHhz6MtDhV6N')
   // }
-  headers: {'X-API-Key', 'tqIQ49k4JY7c2IczBaWGO5ApuGboqHhz6MtDhV6N'}
+  headers: {'X-API-Key': 'tqIQ49k4JY7c2IczBaWGO5ApuGboqHhz6MtDhV6N'}
 })
   .done(function(getData) {
 
